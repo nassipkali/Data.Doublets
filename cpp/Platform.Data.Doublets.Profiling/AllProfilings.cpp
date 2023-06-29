@@ -2,9 +2,7 @@
 
 #include "CreatePointsProfiling.h"
 
-int main()
-{
-    using namespace Platform::Data::Doublets::Profiling;
-    CreatePoints();
+int main() {
+  using namespace Platform::Data::Doublets::Profiling;
+  CreatePoints();
 }
-
