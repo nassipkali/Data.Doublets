@@ -7,10 +7,14 @@
     inline static DoubletComparer<T> Default;
 
    public:
-    bool operator==(const Doublet<T> x, Doublet<T> &y) const { return x.Equals(y); }
+    bool operator==(const Doublet<T> x, Doublet<T> &y) const {
+      return x.Equals(y);
+    }
 
    public:
-    std::int32_t GetHashCode(Doublet<T> obj) { return obj.GetHashCode(); }
+    std::int32_t GetHashCode(Doublet<T> obj) {
+      return obj.GetHashCode();
+    }
   };
 }  // namespace Platform::Data::Doublets
 

@@ -14,41 +14,65 @@
     ExternalLinksSourcesSizeBalancedTreeMethods(std::byte* linksDataParts, std::byte* linksIndexParts, std::byte* header) : base(linksDataParts, linksIndexParts, header) {}
 
    public:
-    LinkAddressType* GetLeftReference(LinkAddressType node) { return &(this->GetLinkIndexPartReference(node).LeftAsSource); }
+    LinkAddressType* GetLeftReference(LinkAddressType node) {
+      return &(this->GetLinkIndexPartReference(node).LeftAsSource);
+    }
 
    public:
-    LinkAddressType* GetRightReference(LinkAddressType node) { return &(this->GetLinkIndexPartReference(node).RightAsSource); }
+    LinkAddressType* GetRightReference(LinkAddressType node) {
+      return &(this->GetLinkIndexPartReference(node).RightAsSource);
+    }
 
    public:
-    LinkAddressType GetLeft(LinkAddressType node) { return this->GetLinkIndexPartReference(node).LeftAsSource; }
+    LinkAddressType GetLeft(LinkAddressType node) {
+      return this->GetLinkIndexPartReference(node).LeftAsSource;
+    }
 
    public:
-    LinkAddressType GetRight(LinkAddressType node) { return this->GetLinkIndexPartReference(node).RightAsSource; }
+    LinkAddressType GetRight(LinkAddressType node) {
+      return this->GetLinkIndexPartReference(node).RightAsSource;
+    }
 
    public:
-    void SetLeft(LinkAddressType node, LinkAddressType left) { this->GetLinkIndexPartReference(node).LeftAsSource = left; }
+    void SetLeft(LinkAddressType node, LinkAddressType left) {
+      this->GetLinkIndexPartReference(node).LeftAsSource = left;
+    }
 
    public:
-    void SetRight(LinkAddressType node, LinkAddressType right) { this->GetLinkIndexPartReference(node).RightAsSource = right; }
+    void SetRight(LinkAddressType node, LinkAddressType right) {
+      this->GetLinkIndexPartReference(node).RightAsSource = right;
+    }
 
    public:
-    LinkAddressType GetSize(LinkAddressType node) { return this->GetLinkIndexPartReference(node).SizeAsSource; }
+    LinkAddressType GetSize(LinkAddressType node) {
+      return this->GetLinkIndexPartReference(node).SizeAsSource;
+    }
 
    public:
-    void SetSize(LinkAddressType node, LinkAddressType size) { this->GetLinkIndexPartReference(node).SizeAsSource = size; }
+    void SetSize(LinkAddressType node, LinkAddressType size) {
+      this->GetLinkIndexPartReference(node).SizeAsSource = size;
+    }
 
    public:
-    LinkAddressType GetTreeRoot() { return this->GetHeaderReference().RootAsSource; }
+    LinkAddressType GetTreeRoot() {
+      return this->GetHeaderReference().RootAsSource;
+    }
 
    public:
-    LinkAddressType GetBasePartValue(LinkAddressType link) { return this->GetLinkDataPartReference(link).Source; }
+    LinkAddressType GetBasePartValue(LinkAddressType link) {
+      return this->GetLinkDataPartReference(link).Source;
+    }
 
    public:
-    bool FirstIsToTheLeftOfSecond(LinkAddressType firstSource, LinkAddressType firstTarget, LinkAddressType secondSource, LinkAddressType secondTarget) { return (firstSource < secondSource) || (firstSource == secondSource && (firstTarget < secondTarget)); }
+    bool FirstIsToTheLeftOfSecond(LinkAddressType firstSource, LinkAddressType firstTarget, LinkAddressType secondSource, LinkAddressType secondTarget) {
+      return (firstSource < secondSource) || (firstSource == secondSource && (firstTarget < secondTarget));
+    }
     using base::FirstIsToTheLeftOfSecond;
 
    public:
-    bool FirstIsToTheRightOfSecond(LinkAddressType firstSource, LinkAddressType firstTarget, LinkAddressType secondSource, LinkAddressType secondTarget) { return firstSource > secondSource || (firstSource == secondSource && firstTarget > secondTarget); }
+    bool FirstIsToTheRightOfSecond(LinkAddressType firstSource, LinkAddressType firstTarget, LinkAddressType secondSource, LinkAddressType secondTarget) {
+      return firstSource > secondSource || (firstSource == secondSource && firstTarget > secondTarget);
+    }
     using base::FirstIsToTheRightOfSecond;
 
    public:

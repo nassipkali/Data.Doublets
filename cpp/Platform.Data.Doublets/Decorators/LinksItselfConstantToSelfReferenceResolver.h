@@ -17,6 +17,8 @@
     }
 
    public:
-    TLinkAddress Update(const LinkType& restriction, const LinkType& substitution) { return this->decorated().TDecorated::Update(restriction, this->decorated().TDecorated::ResolveConstantAsSelfReference(_constants.Itself, restriction, substitution)); }
+    TLinkAddress Update(const LinkType& restriction, const LinkType& substitution) {
+      return this->decorated().TDecorated::Update(restriction, this->decorated().TDecorated::ResolveConstantAsSelfReference(_constants.Itself, restriction, substitution));
+    }
   };
 }  // namespace Platform::Data::Doublets::Decorators

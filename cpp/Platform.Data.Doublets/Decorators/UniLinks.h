@@ -114,6 +114,8 @@
     }
 
    private:
-    TLinkAddress AlwaysContinue(const LinkType& linkToMatch) { return _constants.Continue; }
+    TLinkAddress AlwaysContinue(const LinkType& linkToMatch) {
+      return _constants.Continue;
+    }
   };
 }  // namespace Platform::Data::Doublets::Decorators

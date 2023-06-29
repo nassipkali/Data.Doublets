@@ -77,7 +77,9 @@
     }
 
    public:
-    operator std::vector<TLinkAddress>() { return std::vector<TLinkAddress>{Index, Source, Target}; }
+    operator std::vector<TLinkAddress>() {
+      return std::vector<TLinkAddress>{Index, Source, Target};
+    }
 
    public:
     bool IsNull() const noexcept {
@@ -116,29 +118,45 @@
     }
 
    public:
-    std::size_t size() const noexcept { return Length; }
+    std::size_t size() const noexcept {
+      return Length;
+    }
 
    public:
-    bool empty() const noexcept { return 0 == size(); }
+    bool empty() const noexcept {
+      return 0 == size();
+    }
 
     // TODO: a little unsafe
    public:
-    auto begin() const noexcept { return &Index; }
+    auto begin() const noexcept {
+      return &Index;
+    }
 
    public:
-    auto end() const noexcept { return &Target + 1; }
+    auto end() const noexcept {
+      return &Target + 1;
+    }
 
    public:
-    explicit operator std::string() const { return Index == _constants.Null ? ToString(Source, Target) : ToString(Index, Source, Target); }
+    explicit operator std::string() const {
+      return Index == _constants.Null ? ToString(Source, Target) : ToString(Index, Source, Target);
+    }
 
    public:
-    friend auto& operator<<(std::ostream& stream, const Link<TLinkAddress>& self) { return stream << static_cast<std::string>(self); }
+    friend auto& operator<<(std::ostream& stream, const Link<TLinkAddress>& self) {
+      return stream << static_cast<std::string>(self);
+    }
 
    public:
-    static std::string ToString(TLinkAddress index, TLinkAddress source, TLinkAddress target) { return std::string("(").append(Platform::Converters::To<std::string>(index)).append(": ").append(Platform::Converters::To<std::string>(source)).append("->").append(Platform::Converters::To<std::string>(target)).append(1, ')'); }
+    static std::string ToString(TLinkAddress index, TLinkAddress source, TLinkAddress target) {
+      return std::string("(").append(Platform::Converters::To<std::string>(index)).append(": ").append(Platform::Converters::To<std::string>(source)).append("->").append(Platform::Converters::To<std::string>(target)).append(1, ')');
+    }
 
    public:
-    static std::string ToString(TLinkAddress source, TLinkAddress target) { return std::string("(").append(Platform::Converters::To<std::string>(source)).append("->").append(Platform::Converters::To<std::string>(target)).append(1, ')'); }
+    static std::string ToString(TLinkAddress source, TLinkAddress target) {
+      return std::string("(").append(Platform::Converters::To<std::string>(source)).append("->").append(Platform::Converters::To<std::string>(target)).append(1, ')');
+    }
   };
 
   template <typename... Args>
@@ -151,5 +169,7 @@
 template <std::integral TLinkAddress>
 struct std::hash<Platform::Data::Doublets::Link<TLinkAddress>> {
   using Self = Platform::Data::Doublets::Link<TLinkAddress>;
-  std::size_t operator()(const Self& self) const noexcept { return Platform::Hashing::Hash(self.Index, self.Source, self.Target); }
+  std::size_t operator()(const Self& self) const noexcept {
+    return Platform::Hashing::Hash(self.Index, self.Source, self.Target);
+  }
 };

@@ -34,13 +34,21 @@
 
     TUnusedLinks* _UnusedLinksListMethods;
 
-    LinksHeader<LinkAddressType>& GetHeaderReference() { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header); }
+    LinksHeader<LinkAddressType>& GetHeaderReference() {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header);
+    }
 
-    const LinksHeader<LinkAddressType>& GetHeaderReference() const { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header); }
+    const LinksHeader<LinkAddressType>& GetHeaderReference() const {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header);
+    }
 
-    const RawLink<LinkAddressType>& GetLinkReference(LinkAddressType linkIndex) const { return *(reinterpret_cast<RawLink<LinkAddressType>*>(_links) + linkIndex); }
+    const RawLink<LinkAddressType>& GetLinkReference(LinkAddressType linkIndex) const {
+      return *(reinterpret_cast<RawLink<LinkAddressType>*>(_links) + linkIndex);
+    }
 
-    RawLink<LinkAddressType>& GetLinkReference(LinkAddressType linkIndex) { return *(reinterpret_cast<RawLink<LinkAddressType>*>(_links) + linkIndex); }
+    RawLink<LinkAddressType>& GetLinkReference(LinkAddressType linkIndex) {
+      return *(reinterpret_cast<RawLink<LinkAddressType>*>(_links) + linkIndex);
+    }
 
     LinkAddressType GetTotal() const {
       auto& header = this->GetHeaderReference();
@@ -51,7 +59,9 @@
    public:
     UnitedMemoryLinksBase(TMemory&& memory) : UnitedMemoryLinksBase(std::move(memory), DefaultLinksSizeStep) {}
 
-    UnitedMemoryLinksBase(TMemory&& memory, std::uint64_t memoryReservationStep) : _memory(std::move(memory)), _memoryReservationStep(memoryReservationStep) { Init(_memory, memoryReservationStep); }
+    UnitedMemoryLinksBase(TMemory&& memory, std::uint64_t memoryReservationStep) : _memory(std::move(memory)), _memoryReservationStep(memoryReservationStep) {
+      Init(_memory, memoryReservationStep);
+    }
 
     void Init(TMemory& memory, std::size_t memoryReservationStep) {
       if (memory.ReservedCapacity() < memoryReservationStep) {

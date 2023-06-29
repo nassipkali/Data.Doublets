@@ -26,19 +26,29 @@
     }
 
    public:
-    const RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) const { return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_linksDataParts + (RawLinkDataPart<LinkAddressType>::SizeInBytes * link)); }
+    const RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) const {
+      return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_linksDataParts + (RawLinkDataPart<LinkAddressType>::SizeInBytes * link));
+    }
 
    public:
-    RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) { return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_linksDataParts + (RawLinkDataPart<LinkAddressType>::SizeInBytes * link)); }
+    RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) {
+      return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_linksDataParts + (RawLinkDataPart<LinkAddressType>::SizeInBytes * link));
+    }
 
    public:
-    const RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType link) const { return *reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(_linksDataParts + (RawLinkIndexPart<LinkAddressType>::SizeInBytes * link)); }
+    const RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType link) const {
+      return *reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(_linksDataParts + (RawLinkIndexPart<LinkAddressType>::SizeInBytes * link));
+    }
 
    public:
-    RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType link) { return *reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(_linksDataParts + (RawLinkIndexPart<LinkAddressType>::SizeInBytes * link)); }
+    RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType link) {
+      return *reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(_linksDataParts + (RawLinkIndexPart<LinkAddressType>::SizeInBytes * link));
+    }
 
    public:
-    LinkAddressType GetFirst(LinkAddressType head) { return this->GetLinkIndexPartReference(head).RootAsSource; }
+    LinkAddressType GetFirst(LinkAddressType head) {
+      return this->GetLinkIndexPartReference(head).RootAsSource;
+    }
 
    public:
     LinkAddressType GetLast(LinkAddressType head) {
@@ -51,31 +61,47 @@
     }
 
    public:
-    LinkAddressType GetPrevious(LinkAddressType element) { return this->GetLinkIndexPartReference(element).LeftAsSource; }
+    LinkAddressType GetPrevious(LinkAddressType element) {
+      return this->GetLinkIndexPartReference(element).LeftAsSource;
+    }
 
    public:
-    LinkAddressType GetNext(LinkAddressType element) { return this->GetLinkIndexPartReference(element).RightAsSource; }
+    LinkAddressType GetNext(LinkAddressType element) {
+      return this->GetLinkIndexPartReference(element).RightAsSource;
+    }
 
    public:
-    LinkAddressType GetSize(LinkAddressType head) { return this->GetLinkIndexPartReference(head).SizeAsSource; }
+    LinkAddressType GetSize(LinkAddressType head) {
+      return this->GetLinkIndexPartReference(head).SizeAsSource;
+    }
 
    public:
-    void SetFirst(LinkAddressType head, LinkAddressType element) { this->GetLinkIndexPartReference(head).RootAsSource = element; }
+    void SetFirst(LinkAddressType head, LinkAddressType element) {
+      this->GetLinkIndexPartReference(head).RootAsSource = element;
+    }
 
    public:
     void SetLast(LinkAddressType head, LinkAddressType element) {}
 
    public:
-    void SetPrevious(LinkAddressType element, LinkAddressType previous) { this->GetLinkIndexPartReference(element).LeftAsSource = previous; }
+    void SetPrevious(LinkAddressType element, LinkAddressType previous) {
+      this->GetLinkIndexPartReference(element).LeftAsSource = previous;
+    }
 
    public:
-    void SetNext(LinkAddressType element, LinkAddressType next) { this->GetLinkIndexPartReference(element).RightAsSource = next; }
+    void SetNext(LinkAddressType element, LinkAddressType next) {
+      this->GetLinkIndexPartReference(element).RightAsSource = next;
+    }
 
    public:
-    void SetSize(LinkAddressType head, LinkAddressType size) { this->GetLinkIndexPartReference(head).SizeAsSource = size; }
+    void SetSize(LinkAddressType head, LinkAddressType size) {
+      this->GetLinkIndexPartReference(head).SizeAsSource = size;
+    }
 
    public:
-    LinkAddressType CountUsages(LinkAddressType head) { return this->GetSize(head); }
+    LinkAddressType CountUsages(LinkAddressType head) {
+      return this->GetSize(head);
+    }
 
    public:
     Interfaces::CArray auto GetLinkValues(LinkAddressType linkIndex) {

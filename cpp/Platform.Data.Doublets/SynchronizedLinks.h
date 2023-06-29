@@ -27,19 +27,27 @@
     }
 
    public:
-    TLinkAddress Count(IList<TLinkAddress> &restriction) { return SyncRoot.ExecuteReadOperation(restriction, Unsync.Count()); }
+    TLinkAddress Count(IList<TLinkAddress> &restriction) {
+      return SyncRoot.ExecuteReadOperation(restriction, Unsync.Count());
+    }
 
    public:
     TLinkAddress Each(Func<IList<TLinkAddress>, TLinkAddress> handler, IList<TLinkAddress> &restriction) { return SyncRoot.ExecuteReadOperation(handler, restriction, (handler1, restriction1) { return Unsync.Each(restriction1, handler1)); }
     }
 
    public:
-    TLinkAddress Create(IList<TLinkAddress> &restriction) { return SyncRoot.ExecuteWriteOperation(restriction, Unsync.Create); }
+    TLinkAddress Create(IList<TLinkAddress> &restriction) {
+      return SyncRoot.ExecuteWriteOperation(restriction, Unsync.Create);
+    }
 
    public:
-    TLinkAddress Update(IList<TLinkAddress> &restriction, IList<TLinkAddress> &substitution) { return SyncRoot.ExecuteWriteOperation(restriction, substitution, Unsync.Update); }
+    TLinkAddress Update(IList<TLinkAddress> &restriction, IList<TLinkAddress> &substitution) {
+      return SyncRoot.ExecuteWriteOperation(restriction, substitution, Unsync.Update);
+    }
 
    public:
-    void Delete(IList<TLinkAddress> &restriction) { SyncRoot.ExecuteWriteOperation(restriction, Unsync.Delete); }
+    void Delete(IList<TLinkAddress> &restriction) {
+      SyncRoot.ExecuteWriteOperation(restriction, Unsync.Delete);
+    }
   };
 }  // namespace Platform::Data::Doublets

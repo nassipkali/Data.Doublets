@@ -34,31 +34,49 @@
     }
 
    public:
-    LinkAddressType GetTreeRoot(LinkAddressType link) { return this->object().GetTreeRoot(link); };
+    LinkAddressType GetTreeRoot(LinkAddressType link) {
+      return this->object().GetTreeRoot(link);
+    };
 
    public:
-    LinkAddressType GetBasePartValue(LinkAddressType link) { return this->object().GetBasePartValue(link); };
+    LinkAddressType GetBasePartValue(LinkAddressType link) {
+      return this->object().GetBasePartValue(link);
+    };
 
    public:
-    LinkAddressType GetKeyPartValue(LinkAddressType link) { return this->object().GetKeyPartValue(link); };
+    LinkAddressType GetKeyPartValue(LinkAddressType link) {
+      return this->object().GetKeyPartValue(link);
+    };
 
    public:
-    const RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) const { return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(LinksDataParts + (RawLinkDataPart<LinkAddressType>::SizeInBytes * link)); }
+    const RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) const {
+      return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(LinksDataParts + (RawLinkDataPart<LinkAddressType>::SizeInBytes * link));
+    }
 
    public:
-    RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) { return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(LinksDataParts + (RawLinkDataPart<LinkAddressType>::SizeInBytes * link)); }
+    RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) {
+      return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(LinksDataParts + (RawLinkDataPart<LinkAddressType>::SizeInBytes * link));
+    }
 
    public:
-    const RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType link) const { return *reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(LinksIndexParts + (RawLinkIndexPart<LinkAddressType>::SizeInBytes * link)); }
+    const RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType link) const {
+      return *reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(LinksIndexParts + (RawLinkIndexPart<LinkAddressType>::SizeInBytes * link));
+    }
 
    public:
-    RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType link) { return *reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(LinksIndexParts + (RawLinkIndexPart<LinkAddressType>::SizeInBytes * link)); }
+    RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType link) {
+      return *reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(LinksIndexParts + (RawLinkIndexPart<LinkAddressType>::SizeInBytes * link));
+    }
 
    public:
-    bool FirstIsToTheLeftOfSecond(LinkAddressType first, LinkAddressType second) { return this->GetKeyPartValue(first) < this->GetKeyPartValue(second); }
+    bool FirstIsToTheLeftOfSecond(LinkAddressType first, LinkAddressType second) {
+      return this->GetKeyPartValue(first) < this->GetKeyPartValue(second);
+    }
 
    public:
-    bool FirstIsToTheRightOfSecond(LinkAddressType first, LinkAddressType second) { return this->GetKeyPartValue(first) > this->GetKeyPartValue(second); }
+    bool FirstIsToTheRightOfSecond(LinkAddressType first, LinkAddressType second) {
+      return this->GetKeyPartValue(first) > this->GetKeyPartValue(second);
+    }
 
    public:
     auto GetLinkValues(LinkAddressType linkIndex) {
@@ -93,7 +111,9 @@
     //        }
 
    public:
-    LinkAddressType Search(LinkAddressType source, LinkAddressType target) { return this->object().Search(source, target); };
+    LinkAddressType Search(LinkAddressType source, LinkAddressType target) {
+      return this->object().Search(source, target);
+    };
 
    public:
     LinkAddressType SearchCore(LinkAddressType root, LinkAddressType key) {
@@ -111,10 +131,14 @@
     }
 
    public:
-    LinkAddressType CountUsages(LinkAddressType link) { return this->GetSizeOrZero(this->GetTreeRoot(link)); }
+    LinkAddressType CountUsages(LinkAddressType link) {
+      return this->GetSizeOrZero(this->GetTreeRoot(link));
+    }
 
    public:
-    LinkAddressType EachUsage(LinkAddressType base, const ReadHandlerType& handler) { return this->EachUsageCore(base, this->GetTreeRoot(base), handler); }
+    LinkAddressType EachUsage(LinkAddressType base, const ReadHandlerType& handler) {
+      return this->EachUsageCore(base, this->GetTreeRoot(base), handler);
+    }
 
    private:
     LinkAddressType EachUsageCore(LinkAddressType base, LinkAddressType link, const ReadHandlerType& handler) {

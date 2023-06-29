@@ -31,13 +31,19 @@
       Transition(UniqueTimestampFactory uniqueTimestampFactory, std::uint64_t transactionId) : this(uniqueTimestampFactory, transactionId, 0, 0) {}
 
      public:
-      std::string ToString() { return std::string("").append(Platform::Converters::To<std::string>(Timestamp)).append(1, ' ').append(Platform::Converters::To<std::string>(TransactionId)).append(": ").append(Platform::Converters::To<std::string>(Before)).append(" => ").append(Platform::Converters::To<std::string>(After)).append(""); }
+      std::string ToString() {
+        return std::string("").append(Platform::Converters::To<std::string>(Timestamp)).append(1, ' ').append(Platform::Converters::To<std::string>(TransactionId)).append(": ").append(Platform::Converters::To<std::string>(Before)).append(" => ").append(Platform::Converters::To<std::string>(After)).append("");
+      }
 
      public:
-      std::int32_t GetHashCode() { return Platform::Hashing::Hash(TransactionId, Before, After, Timestamp); }
+      std::int32_t GetHashCode() {
+        return Platform::Hashing::Hash(TransactionId, Before, After, Timestamp);
+      }
 
      public:
-      bool operator==(const Transition &other) const { return TransactionId == other.TransactionId && Before == other.Before && After == other.After && Timestamp == other.Timestamp; }
+      bool operator==(const Transition &other) const {
+        return TransactionId == other.TransactionId && Before == other.Before && After == other.After && Timestamp == other.Timestamp;
+      }
     }
 
     class Transaction : public DisposableBase {
@@ -173,7 +179,9 @@
     }
 
    public:
-    IList<std::uint64_t> GetLinkValue(std::uint64_t link) { return _links.GetLink(link); }
+    IList<std::uint64_t> GetLinkValue(std::uint64_t link) {
+      return _links.GetLink(link);
+    }
 
    public:
     std::uint64_t Create(IList<std::uint64_t> &restriction) {
@@ -202,7 +210,9 @@
     }
 
    private:
-    Queue<Transition> GetCurrentTransitions() { return _currentTransactionTransitions ? ? _transitions; }
+    Queue<Transition> GetCurrentTransitions() {
+      return _currentTransactionTransitions ? ? _transitions;
+    }
 
    private:
     void CommitTransition(Transition transition) {
@@ -253,7 +263,9 @@
     }
 
    public:
-    Transaction BeginTransaction() { return this->Transaction(this); }
+    Transaction BeginTransaction() {
+      return this->Transaction(this);
+    }
 
    private:
     void DisposeTransitions() {

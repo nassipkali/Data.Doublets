@@ -8,7 +8,9 @@ namespace Platform::Data::Doublets::Decorators {
     UInt32Links(ILinks<TLinkAddress>& storage) : base(storage) {}
 
    public:
-    TLinkAddress Create(const LinkType& restriction) { return this->decorated().TDecorated::CreatePoint(); }
+    TLinkAddress Create(const LinkType& restriction) {
+      return this->decorated().TDecorated::CreatePoint();
+    }
 
    public:
     TLinkAddress Update(const LinkType& restriction, const LinkType& substitution) {

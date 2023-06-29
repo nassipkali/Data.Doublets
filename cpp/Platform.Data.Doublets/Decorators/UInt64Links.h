@@ -4,7 +4,9 @@
     UInt64Links(ILinks<std::uint64_t> &storage) : base(storage) {}
 
    public:
-    std::uint64_t Create(IList<std::uint64_t> &restriction) { return this->decorated().TDecorated::CreatePoint(); }
+    std::uint64_t Create(IList<std::uint64_t> &restriction) {
+      return this->decorated().TDecorated::CreatePoint();
+    }
 
    public:
     std::uint64_t Update(IList<std::uint64_t> &restriction, IList<std::uint64_t> &substitution) {

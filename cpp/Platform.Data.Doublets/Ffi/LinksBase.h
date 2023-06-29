@@ -234,7 +234,9 @@ namespace Platform::Data::Doublets::Ffi {
       using Signature = LinkAddressType(Link<LinkAddressType>);
       auto restrictionLength = std::ranges::size(restriction);
       auto restrictionPtr = std::ranges::data(restriction);
-      auto callback = [&](Link<LinkAddressType> link) { return handler(Link{link.Index, link.Source, link.Target}); };
+      auto callback = [&](Link<LinkAddressType> link) {
+        return handler(Link{link.Index, link.Source, link.Target});
+      };
       set_global<Signature>(callback);
       if constexpr (std::same_as<LinkAddressType, std::uint8_t>) {
         return ByteLinks_Each(_ptr, restrictionPtr, restrictionLength, call_last_global<LinkAddressType, Signature, Link<LinkAddressType>>);

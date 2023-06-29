@@ -7,9 +7,13 @@
     LinksNullConstantToSelfReferenceResolver(ILinks<TLinkAddress>& storage) : DecoratorBase(storage) {}
 
    public:
-    TLinkAddress Create(const LinkType& restriction) { return this->decorated().TDecorated::CreatePoint(); }
+    TLinkAddress Create(const LinkType& restriction) {
+      return this->decorated().TDecorated::CreatePoint();
+    }
 
    public:
-    TLinkAddress Update(const LinkType& restriction, const LinkType& substitution) { return this->decorated().TDecorated::Update(restriction, this->decorated().TDecorated::ResolveConstantAsSelfReference(_constants.Null, restriction, substitution)); }
+    TLinkAddress Update(const LinkType& restriction, const LinkType& substitution) {
+      return this->decorated().TDecorated::Update(restriction, this->decorated().TDecorated::ResolveConstantAsSelfReference(_constants.Null, restriction, substitution));
+    }
   };
 }  // namespace Platform::Data::Doublets::Decorators

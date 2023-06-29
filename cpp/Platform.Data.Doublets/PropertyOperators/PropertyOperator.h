@@ -49,7 +49,9 @@
     }
 
    private:
-    TLinkAddress GetValue(TLinkAddress container) { return container == 0 ? 0 : _links.GetTarget(container); }
+    TLinkAddress GetValue(TLinkAddress container) {
+      return container == 0 ? 0 : _links.GetTarget(container);
+    }
 
    public:
     void Set(TLinkAddress link, TLinkAddress value) {

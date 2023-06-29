@@ -3,3 +3,7 @@ Language: Cpp
 BasedOnStyle: google
 ColumnLimit: 400
 NamespaceIndentation: All
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false

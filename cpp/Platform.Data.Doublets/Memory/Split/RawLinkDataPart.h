@@ -9,20 +9,30 @@
     TLinkAddress Source;
     TLinkAddress Target;
 
-    bool operator=(RawLinkDataPart<TLinkAddress> other) { return (Source == other.Source) && (Target == other.Target); }
+    bool operator=(RawLinkDataPart<TLinkAddress> other) {
+      return (Source == other.Source) && (Target == other.Target);
+    }
 
    public:
-    std::int32_t GetHashCode() { return Platform::Hashing::Hash(Source, Target); }
+    std::int32_t GetHashCode() {
+      return Platform::Hashing::Hash(Source, Target);
+    }
 
-    bool operator==(RawLinkDataPart<TLinkAddress> other) { return (Source == other.Source) && (Target == other.Target); }
+    bool operator==(RawLinkDataPart<TLinkAddress> other) {
+      return (Source == other.Source) && (Target == other.Target);
+    }
 
-    bool operator!=(RawLinkDataPart<TLinkAddress> other) { return !(this == other); }
+    bool operator!=(RawLinkDataPart<TLinkAddress> other) {
+      return !(this == other);
+    }
   };
 }  // namespace Platform::Data::Doublets::Memory::Split
 
 namespace std {
   template <std::integral TLinkAddress>
   struct hash<Platform::Data::Doublets::Memory::Split::RawLinkDataPart<TLinkAddress>> {
-    std::size_t operator()(const Platform::Data::Doublets::Memory::Split::RawLinkDataPart<TLinkAddress> &obj) const { return obj.GetHashCode(); }
+    std::size_t operator()(const Platform::Data::Doublets::Memory::Split::RawLinkDataPart<TLinkAddress> &obj) const {
+      return obj.GetHashCode();
+    }
   };
 }  // namespace std

@@ -14,37 +14,59 @@
     InternalLinksSourcesRecursionlessSizeBalancedTreeMethods(std::byte* linksDataParts, std::byte* linksIndexParts, std::byte* header) : base(linksDataParts, linksIndexParts, header) {}
 
    public:
-    LinkAddressType* GetLeftReference(LinkAddressType node) { return &(this->GetLinkIndexPartReference(node).LeftAsSource); }
+    LinkAddressType* GetLeftReference(LinkAddressType node) {
+      return &(this->GetLinkIndexPartReference(node).LeftAsSource);
+    }
 
    public:
-    LinkAddressType* GetRightReference(LinkAddressType node) { return &(this->GetLinkIndexPartReference(node).RightAsSource); }
+    LinkAddressType* GetRightReference(LinkAddressType node) {
+      return &(this->GetLinkIndexPartReference(node).RightAsSource);
+    }
 
    public:
-    LinkAddressType GetLeft(LinkAddressType node) { return this->GetLinkIndexPartReference(node).LeftAsSource; }
+    LinkAddressType GetLeft(LinkAddressType node) {
+      return this->GetLinkIndexPartReference(node).LeftAsSource;
+    }
 
    public:
-    LinkAddressType GetRight(LinkAddressType node) { return this->GetLinkIndexPartReference(node).RightAsSource; }
+    LinkAddressType GetRight(LinkAddressType node) {
+      return this->GetLinkIndexPartReference(node).RightAsSource;
+    }
 
    public:
-    void SetLeft(LinkAddressType node, LinkAddressType left) { this->GetLinkIndexPartReference(node).LeftAsSource = left; }
+    void SetLeft(LinkAddressType node, LinkAddressType left) {
+      this->GetLinkIndexPartReference(node).LeftAsSource = left;
+    }
 
    public:
-    void SetRight(LinkAddressType node, LinkAddressType right) { this->GetLinkIndexPartReference(node).RightAsSource = right; }
+    void SetRight(LinkAddressType node, LinkAddressType right) {
+      this->GetLinkIndexPartReference(node).RightAsSource = right;
+    }
 
    public:
-    LinkAddressType GetSize(LinkAddressType node) { return this->GetLinkIndexPartReference(node).SizeAsSource; }
+    LinkAddressType GetSize(LinkAddressType node) {
+      return this->GetLinkIndexPartReference(node).SizeAsSource;
+    }
 
    public:
-    void SetSize(LinkAddressType node, LinkAddressType size) { this->GetLinkIndexPartReference(node).SizeAsSource = size; }
+    void SetSize(LinkAddressType node, LinkAddressType size) {
+      this->GetLinkIndexPartReference(node).SizeAsSource = size;
+    }
 
    public:
-    LinkAddressType GetTreeRoot(LinkAddressType link) { return this->GetLinkIndexPartReference(link).RootAsSource; }
+    LinkAddressType GetTreeRoot(LinkAddressType link) {
+      return this->GetLinkIndexPartReference(link).RootAsSource;
+    }
 
    public:
-    LinkAddressType GetBasePartValue(LinkAddressType link) { return this->GetLinkDataPartReference(link).Source; }
+    LinkAddressType GetBasePartValue(LinkAddressType link) {
+      return this->GetLinkDataPartReference(link).Source;
+    }
 
    public:
-    LinkAddressType GetKeyPartValue(LinkAddressType link) { return this->GetLinkDataPartReference(link).Target; }
+    LinkAddressType GetKeyPartValue(LinkAddressType link) {
+      return this->GetLinkDataPartReference(link).Target;
+    }
 
    public:
     void ClearNode(LinkAddressType node) {
@@ -55,6 +77,8 @@
     }
 
    public:
-    LinkAddressType Search(LinkAddressType source, LinkAddressType target) { return this->SearchCore(this->GetTreeRoot(source), target); }
+    LinkAddressType Search(LinkAddressType source, LinkAddressType target) {
+      return this->SearchCore(this->GetTreeRoot(source), target);
+    }
   };
 }  // namespace Platform::Data::Doublets::Memory::Split::Generic

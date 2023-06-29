@@ -26,45 +26,73 @@
     }
 
    public:
-    const LinksHeader<LinkAddressType>& GetHeaderReference() const { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header); }
+    const LinksHeader<LinkAddressType>& GetHeaderReference() const {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header);
+    }
 
    public:
-    LinksHeader<LinkAddressType>& GetHeaderReference() { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header); }
+    LinksHeader<LinkAddressType>& GetHeaderReference() {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header);
+    }
 
    public:
-    const RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) const { return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_storage + (RawLinkDataPart<LinkAddressType>::SizeInBytes * (link))); }
+    const RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) const {
+      return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_storage + (RawLinkDataPart<LinkAddressType>::SizeInBytes * (link)));
+    }
 
    public:
-    RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) { return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_storage + (RawLinkDataPart<LinkAddressType>::SizeInBytes * (link))); }
+    RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType link) {
+      return *reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_storage + (RawLinkDataPart<LinkAddressType>::SizeInBytes * (link)));
+    }
 
    public:
-    LinkAddressType GetFirst() { return this->GetHeaderReference().FirstFreeLink; }
+    LinkAddressType GetFirst() {
+      return this->GetHeaderReference().FirstFreeLink;
+    }
 
    public:
-    LinkAddressType GetLast() { return this->GetHeaderReference().LastFreeLink; }
+    LinkAddressType GetLast() {
+      return this->GetHeaderReference().LastFreeLink;
+    }
 
    public:
-    LinkAddressType GetPrevious(LinkAddressType element) { return this->GetLinkDataPartReference(element).Source; }
+    LinkAddressType GetPrevious(LinkAddressType element) {
+      return this->GetLinkDataPartReference(element).Source;
+    }
 
    public:
-    LinkAddressType GetNext(LinkAddressType element) { return this->GetLinkDataPartReference(element).Target; }
+    LinkAddressType GetNext(LinkAddressType element) {
+      return this->GetLinkDataPartReference(element).Target;
+    }
 
    public:
-    LinkAddressType GetSize() { return this->GetHeaderReference().FreeLinks; }
+    LinkAddressType GetSize() {
+      return this->GetHeaderReference().FreeLinks;
+    }
 
    public:
-    void SetFirst(LinkAddressType element) { this->GetHeaderReference().FirstFreeLink = element; }
+    void SetFirst(LinkAddressType element) {
+      this->GetHeaderReference().FirstFreeLink = element;
+    }
 
    public:
-    void SetLast(LinkAddressType element) { this->GetHeaderReference().LastFreeLink = element; }
+    void SetLast(LinkAddressType element) {
+      this->GetHeaderReference().LastFreeLink = element;
+    }
 
    public:
-    void SetPrevious(LinkAddressType element, LinkAddressType previous) { this->GetLinkDataPartReference(element).Source = previous; }
+    void SetPrevious(LinkAddressType element, LinkAddressType previous) {
+      this->GetLinkDataPartReference(element).Source = previous;
+    }
 
    public:
-    void SetNext(LinkAddressType element, LinkAddressType next) { this->GetLinkDataPartReference(element).Target = next; }
+    void SetNext(LinkAddressType element, LinkAddressType next) {
+      this->GetLinkDataPartReference(element).Target = next;
+    }
 
    public:
-    void SetSize(LinkAddressType size) { this->GetHeaderReference().FreeLinks = size; }
+    void SetSize(LinkAddressType size) {
+      this->GetHeaderReference().FreeLinks = size;
+    }
   };
 }  // namespace Platform::Data::Doublets::Memory::Split::Generic

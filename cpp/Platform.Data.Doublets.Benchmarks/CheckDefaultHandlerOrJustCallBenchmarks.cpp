@@ -1,6 +1,8 @@
 namespace Platform::Data::Doublets::Benchmarks {
   using TLinkAddress = std::uint64_t;
-  constexpr auto DefaultHandler = [](TLinkAddress source, TLinkAddress target) { return 1; };
+  constexpr auto DefaultHandler = [](TLinkAddress source, TLinkAddress target) {
+    return 1;
+  };
 
   TLinkAddress CheckDefaultHandlerAndCallHandler(TLinkAddress source, TLinkAddress target, auto&& handler) {
     if (DefaultHandler == handler) {
@@ -10,7 +12,9 @@ namespace Platform::Data::Doublets::Benchmarks {
     }
   }
 
-  TLinkAddress CallHandler(TLinkAddress source, TLinkAddress target, auto&& handler) { return handler(source, target); }
+  TLinkAddress CallHandler(TLinkAddress source, TLinkAddress target, auto&& handler) {
+    return handler(source, target);
+  }
 
   static void BM_CheckDefaultHandlerAndSumWithoutOptimization(benchmark::State& state) {
     for (auto _ : state) {

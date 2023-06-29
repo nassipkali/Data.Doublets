@@ -21,22 +21,34 @@
     LinksRecursionlessSizeBalancedTreeMethodsBase(std::byte* storage, std::byte* header) : Links(storage), Header(header) {}
 
    public:
-    LinkAddressType GetTreeRoot() { return this->object().GetTreeRoot(); }
+    LinkAddressType GetTreeRoot() {
+      return this->object().GetTreeRoot();
+    }
 
    public:
-    LinkAddressType GetBasePartValue(LinkAddressType linkAddress) { return this->object().GetBasePartValue(linkAddress); }
+    LinkAddressType GetBasePartValue(LinkAddressType linkAddress) {
+      return this->object().GetBasePartValue(linkAddress);
+    }
 
    public:
-    bool FirstIsToTheRightOfSecond(LinkAddressType source, LinkAddressType target, LinkAddressType rootSource, LinkAddressType rootTarget) { return this->object().FirstIsToTheRightOfSecond(source, target, rootSource, rootTarget); }
+    bool FirstIsToTheRightOfSecond(LinkAddressType source, LinkAddressType target, LinkAddressType rootSource, LinkAddressType rootTarget) {
+      return this->object().FirstIsToTheRightOfSecond(source, target, rootSource, rootTarget);
+    }
 
    public:
-    bool FirstIsToTheLeftOfSecond(LinkAddressType source, LinkAddressType target, LinkAddressType rootSource, LinkAddressType rootTarget) { return this->object().FirstIsToTheLeftOfSecond(source, target, rootSource, rootTarget); }
+    bool FirstIsToTheLeftOfSecond(LinkAddressType source, LinkAddressType target, LinkAddressType rootSource, LinkAddressType rootTarget) {
+      return this->object().FirstIsToTheLeftOfSecond(source, target, rootSource, rootTarget);
+    }
 
    public:
-    auto& GetHeaderReference() { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(Header); }
+    auto& GetHeaderReference() {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(Header);
+    }
 
    public:
-    auto& GetLinkReference(LinkAddressType linkAddress) { return *(reinterpret_cast<RawLink<LinkAddressType>*>(Links) + linkAddress); }
+    auto& GetLinkReference(LinkAddressType linkAddress) {
+      return *(reinterpret_cast<RawLink<LinkAddressType>*>(Links) + linkAddress);
+    }
 
    public:
     LinkType GetLinkValues(LinkAddressType linkIndex) {
@@ -126,7 +138,9 @@
     }
 
    public:
-    LinkAddressType EachUsage(LinkAddressType base, const ReadHandlerType& handler) { return this->EachUsageCore(base, this->GetTreeRoot(), handler); }
+    LinkAddressType EachUsage(LinkAddressType base, const ReadHandlerType& handler) {
+      return this->EachUsageCore(base, this->GetTreeRoot(), handler);
+    }
 
    private:
     LinkAddressType EachUsageCore(LinkAddressType base, LinkAddressType linkAddress, const ReadHandlerType& handler) {

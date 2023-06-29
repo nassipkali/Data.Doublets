@@ -7,9 +7,13 @@
     TLinkAddress _targetToMatch = 0;
 
    public:
-    TargetMatcher(ILinks<TLinkAddress> &storage, TLinkAddress targetToMatch) : base(storage) { return _targetToMatch = targetToMatch; }
+    TargetMatcher(ILinks<TLinkAddress> &storage, TLinkAddress targetToMatch) : base(storage) {
+      return _targetToMatch = targetToMatch;
+    }
 
    public:
-    bool IsMatched(TLinkAddress link) { return _links.GetTarget(link) == _targetToMatch; }
+    bool IsMatched(TLinkAddress link) {
+      return _links.GetTarget(link) == _targetToMatch;
+    }
   };
 }  // namespace Platform::Data::Doublets::CriterionMatchers

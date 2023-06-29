@@ -26,20 +26,34 @@ namespace Platform::Data::Doublets::Memory::Split::Generic {
     std::byte* _linksIndexParts;
 
    public:
-    const RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType linkIndex) const { return *(reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_linksDataParts + (LinkDataPartSizeInBytes * linkIndex))); }
+    const RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType linkIndex) const {
+      return *(reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_linksDataParts + (LinkDataPartSizeInBytes * linkIndex)));
+    }
 
-    RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType linkIndex) { return *(reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_linksDataParts + (LinkDataPartSizeInBytes * linkIndex))); }
+    RawLinkDataPart<LinkAddressType>& GetLinkDataPartReference(LinkAddressType linkIndex) {
+      return *(reinterpret_cast<RawLinkDataPart<LinkAddressType>*>(_linksDataParts + (LinkDataPartSizeInBytes * linkIndex)));
+    }
 
-    const RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType linkIndex) const { return *(reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(_linksIndexParts + (LinkIndexPartSizeInBytes * linkIndex))); }
+    const RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType linkIndex) const {
+      return *(reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(_linksIndexParts + (LinkIndexPartSizeInBytes * linkIndex)));
+    }
 
-    RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType linkIndex) { return *(reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(_linksIndexParts + (LinkIndexPartSizeInBytes * linkIndex))); }
+    RawLinkIndexPart<LinkAddressType>& GetLinkIndexPartReference(LinkAddressType linkIndex) {
+      return *(reinterpret_cast<RawLinkIndexPart<LinkAddressType>*>(_linksIndexParts + (LinkIndexPartSizeInBytes * linkIndex)));
+    }
 
    public:
-    const LinksHeader<LinkAddressType>& GetHeaderReference() const { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header); }
+    const LinksHeader<LinkAddressType>& GetHeaderReference() const {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header);
+    }
 
-    LinksHeader<LinkAddressType>& GetHeaderReference() { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header); }
+    LinksHeader<LinkAddressType>& GetHeaderReference() {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header);
+    }
 
-    LinkAddressType Total() const { return this->GetHeaderReference().AllocatedLinks - this->GetHeaderReference().FreeLinks; }
+    LinkAddressType Total() const {
+      return this->GetHeaderReference().AllocatedLinks - this->GetHeaderReference().FreeLinks;
+    }
 
    public:
     static constexpr std::size_t LinkDataPartSizeInBytes = sizeof(RawLinkDataPart<LinkAddressType>);
@@ -52,7 +66,9 @@ namespace Platform::Data::Doublets::Memory::Split::Generic {
 
     SplitMemoryLinksBase(TMemory&& dataMemory, TMemory&& indexMemory) : SplitMemoryLinksBase(std::move(dataMemory), std::move(indexMemory), DefaultLinksSizeStep) {}
 
-    SplitMemoryLinksBase(TMemory&& dataMemory, TMemory&& indexMemory, std::uint64_t memoryReservationStep) : _dataMemory{std::move(dataMemory)}, _indexMemory{std::move(indexMemory)}, _dataMemoryReservationStepInBytes{memoryReservationStep * LinkDataPartSizeInBytes}, _indexMemoryReservationStepInBytes{memoryReservationStep * LinkIndexPartSizeInBytes} { Init(_dataMemory, _indexMemory); }
+    SplitMemoryLinksBase(TMemory&& dataMemory, TMemory&& indexMemory, std::uint64_t memoryReservationStep) : _dataMemory{std::move(dataMemory)}, _indexMemory{std::move(indexMemory)}, _dataMemoryReservationStepInBytes{memoryReservationStep * LinkDataPartSizeInBytes}, _indexMemoryReservationStepInBytes{memoryReservationStep * LinkIndexPartSizeInBytes} {
+      Init(_dataMemory, _indexMemory);
+    }
 
     void Init(TMemory& dataMemory, TMemory& indexMemory) {
       if (indexMemory.ReservedCapacity() < LinkHeaderSizeInBytes) {
@@ -611,7 +627,9 @@ namespace Platform::Data::Doublets::Memory::Split::Generic {
       }
     }
 
-    bool Exists(LinkAddressType linkAddress) const { return (linkAddress >= Constants.InternalReferencesRange.Minimum) && (linkAddress <= this->GetHeaderReference().AllocatedLinks) && !IsUnusedLink(linkAddress); }
+    bool Exists(LinkAddressType linkAddress) const {
+      return (linkAddress >= Constants.InternalReferencesRange.Minimum) && (linkAddress <= this->GetHeaderReference().AllocatedLinks) && !IsUnusedLink(linkAddress);
+    }
 
    public:
     LinkType GetLinkStruct(LinkAddressType linkIndex) const {

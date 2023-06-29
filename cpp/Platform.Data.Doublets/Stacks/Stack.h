@@ -7,19 +7,29 @@
     TLinkAddress _stack = 0;
 
    public:
-    bool IsEmpty() { return this->Peek() == _stack; }
+    bool IsEmpty() {
+      return this->Peek() == _stack;
+    }
 
    public:
-    Stack(ILinks<TLinkAddress> &storage, TLinkAddress stack) : base(storage) { return _stack = stack; }
+    Stack(ILinks<TLinkAddress> &storage, TLinkAddress stack) : base(storage) {
+      return _stack = stack;
+    }
 
    private:
-    TLinkAddress GetStackMarker() { return _links.GetSource(_stack); }
+    TLinkAddress GetStackMarker() {
+      return _links.GetSource(_stack);
+    }
 
    private:
-    TLinkAddress GetTop() { return _links.GetTarget(_stack); }
+    TLinkAddress GetTop() {
+      return _links.GetTarget(_stack);
+    }
 
    public:
-    TLinkAddress Peek() { return _links.GetTarget(this->GetTop()); }
+    TLinkAddress Peek() {
+      return _links.GetTarget(this->GetTop());
+    }
 
    public:
     TLinkAddress Pop() {
@@ -34,6 +44,8 @@
     }
 
    public:
-    void Push(TLinkAddress element) { _links.Update(_stack, this->GetStackMarker(), _links.GetOrCreate(this->GetTop(), element)); }
+    void Push(TLinkAddress element) {
+      _links.Update(_stack, this->GetStackMarker(), _links.GetOrCreate(this->GetTop(), element));
+    }
   };
 }  // namespace Platform::Data::Doublets::Stacks

@@ -597,7 +597,9 @@ namespace Platform::Data::Doublets {
 
   template <typename TStorage>
   auto DeleteAll(TStorage& storage) {
-    auto handler = [](typename TStorage::LinkType before, typename TStorage::LinkType substitution) { return typename TStorage::LinkAddressType{}; };
+    auto handler = [](typename TStorage::LinkType before, typename TStorage::LinkType substitution) {
+      return typename TStorage::LinkAddressType{};
+    };
     auto any = storage.Constants.Any;
     for (auto count = Count(storage); count != storage.Constants.Null; count = Count(storage)) {
       DIRECT_METHOD_CALL(TStorage, storage, Delete, {count, any, any}, handler);

@@ -16,45 +16,73 @@
     UnusedLinksListMethods(std::byte* storage, std::byte* header) : _links(storage), _header(header) {}
 
    public:
-    auto& GetHeaderReference() { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header); }
+    auto& GetHeaderReference() {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(_header);
+    }
 
    public:
-    auto& GetLinkReference(LinkAddressType linkIndex) { return *(reinterpret_cast<RawLink<LinkAddressType>*>(_links) + linkIndex); }
+    auto& GetLinkReference(LinkAddressType linkIndex) {
+      return *(reinterpret_cast<RawLink<LinkAddressType>*>(_links) + linkIndex);
+    }
 
    public:
-    LinkAddressType GetFirst() { return GetHeaderReference().FirstFreeLink; }
+    LinkAddressType GetFirst() {
+      return GetHeaderReference().FirstFreeLink;
+    }
 
    public:
-    LinkAddressType GetLast() { return GetHeaderReference().LastFreeLink; }
+    LinkAddressType GetLast() {
+      return GetHeaderReference().LastFreeLink;
+    }
 
    public:
-    LinkAddressType GetPrevious(LinkAddressType element) { return GetLinkReference(element).Source; }
+    LinkAddressType GetPrevious(LinkAddressType element) {
+      return GetLinkReference(element).Source;
+    }
 
    public:
-    LinkAddressType GetNext(LinkAddressType element) { return GetLinkReference(element).Target; }
+    LinkAddressType GetNext(LinkAddressType element) {
+      return GetLinkReference(element).Target;
+    }
 
    public:
-    LinkAddressType GetSize() { return GetHeaderReference().FreeLinks; }
+    LinkAddressType GetSize() {
+      return GetHeaderReference().FreeLinks;
+    }
 
    public:
-    void SetFirst(LinkAddressType element) { GetHeaderReference().FirstFreeLink = element; }
+    void SetFirst(LinkAddressType element) {
+      GetHeaderReference().FirstFreeLink = element;
+    }
 
    public:
-    void SetLast(LinkAddressType element) { GetHeaderReference().LastFreeLink = element; }
+    void SetLast(LinkAddressType element) {
+      GetHeaderReference().LastFreeLink = element;
+    }
 
    public:
-    void SetPrevious(LinkAddressType element, LinkAddressType previous) { GetLinkReference(element).Source = previous; }
+    void SetPrevious(LinkAddressType element, LinkAddressType previous) {
+      GetLinkReference(element).Source = previous;
+    }
 
    public:
-    void SetNext(LinkAddressType element, LinkAddressType next) { GetLinkReference(element).Target = next; }
+    void SetNext(LinkAddressType element, LinkAddressType next) {
+      GetLinkReference(element).Target = next;
+    }
 
    public:
-    void SetSize(LinkAddressType size) { GetHeaderReference().FreeLinks = size; }
+    void SetSize(LinkAddressType size) {
+      GetHeaderReference().FreeLinks = size;
+    }
 
    public:
-    void Detach(LinkAddressType link) { base::Detach(link); }
+    void Detach(LinkAddressType link) {
+      base::Detach(link);
+    }
 
    public:
-    void AttachAsFirst(LinkAddressType link) { base::AttachAsFirst(link); }
+    void AttachAsFirst(LinkAddressType link) {
+      base::AttachAsFirst(link);
+    }
   };
 }  // namespace Platform::Data::Doublets::Memory::United::Generic

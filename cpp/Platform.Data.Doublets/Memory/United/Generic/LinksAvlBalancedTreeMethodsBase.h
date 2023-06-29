@@ -129,10 +129,14 @@
     }
 
    public:
-    auto& GetHeaderReference() const { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(Header); }
+    auto& GetHeaderReference() const {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(Header);
+    }
 
    public:
-    auto& GetLinkReference(LinkAddressType linkAddress) { return *(reinterpret_cast<RawLink<LinkAddressType>*>(Links) + linkAddress); }
+    auto& GetLinkReference(LinkAddressType linkAddress) {
+      return *(reinterpret_cast<RawLink<LinkAddressType>*>(Links) + linkAddress);
+    }
 
    public:
     LinkType GetLinkValues(LinkAddressType linkIndex) {
@@ -155,10 +159,14 @@
     }
 
    public:
-    LinkAddressType GetSizeValue(LinkAddressType value) { return Platform::Numbers::Bit::PartialRead<LinkAddressType>(value, 5, -5); }
+    LinkAddressType GetSizeValue(LinkAddressType value) {
+      return Platform::Numbers::Bit::PartialRead<LinkAddressType>(value, 5, -5);
+    }
 
    public:
-    void SetSizeValue(LinkAddressType* storedValue, LinkAddressType size) { *storedValue = Platform::Numbers::Bit::PartialWrite<LinkAddressType>(*storedValue, size, 5, -5); }
+    void SetSizeValue(LinkAddressType* storedValue, LinkAddressType size) {
+      *storedValue = Platform::Numbers::Bit::PartialWrite<LinkAddressType>(*storedValue, size, 5, -5);
+    }
 
    public:
     bool GetLeftIsChildValue(LinkAddressType value) {

@@ -8,18 +8,26 @@
       DisposableWithMultipleCallsAllowed(std::function<Disposal> disposal) : base(disposal) {}
 
      public:
-      bool AllowMultipleDisposeCalls { get = > true; }
+      bool AllowMultipleDisposeCalls {
+        get = > true;
+      }
     }
 
     public : DisposableWithMultipleCallsAllowed Disposable = 0;
 
    public:
-    LinksDisposableDecoratorBase(ILinks<TLinkAddress> &storage) : base(storage) { return Disposable = DisposableWithMultipleCallsAllowed(Dispose); }
+    LinksDisposableDecoratorBase(ILinks<TLinkAddress> &storage) : base(storage) {
+      return Disposable = DisposableWithMultipleCallsAllowed(Dispose);
+    }
 
-    ~LinksDisposableDecoratorBase() { Disposable.Destruct(); }
+    ~LinksDisposableDecoratorBase() {
+      Disposable.Destruct();
+    }
 
    public:
-    void Dispose() { Disposable.Dispose(); }
+    void Dispose() {
+      Disposable.Dispose();
+    }
 
    public:
     virtual void Dispose(bool manual, bool wasDisposed) {

@@ -20,10 +20,14 @@
     LinksSizeBalancedTreeMethodsBase(std::byte* storage, std::byte* header) : Links(storage), Header(header) {}
 
    public:
-    auto& GetHeaderReference() { return *reinterpret_cast<LinksHeader<LinkAddressType>*>(Header); }
+    auto& GetHeaderReference() {
+      return *reinterpret_cast<LinksHeader<LinkAddressType>*>(Header);
+    }
 
    public:
-    auto& GetLinkReference(LinkAddressType linkAddress) { return *(reinterpret_cast<RawLink<LinkAddressType>*>(Links) + linkAddress); }
+    auto& GetLinkReference(LinkAddressType linkAddress) {
+      return *(reinterpret_cast<RawLink<LinkAddressType>*>(Links) + linkAddress);
+    }
 
    public:
     LinkType GetLinkValues(LinkAddressType linkIndex) {
@@ -113,7 +117,9 @@
     }
 
    public:
-    LinkAddressType EachUsage(LinkAddressType base, const ReadHandlerType& handler) { return this->EachUsageCore(base, this->object().GetTreeRoot(), handler); }
+    LinkAddressType EachUsage(LinkAddressType base, const ReadHandlerType& handler) {
+      return this->EachUsageCore(base, this->object().GetTreeRoot(), handler);
+    }
 
    private:
     LinkAddressType EachUsageCore(LinkAddressType base, LinkAddressType linkAddress, const ReadHandlerType& handler) {
